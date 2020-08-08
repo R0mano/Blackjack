@@ -1,10 +1,70 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    width: 100%;
-    margin: 0;
-    font-family: Helvetica;
-    background-color: rgb(192, 48, 37);
-  }
+  box-sizing: border-box;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: Helvetica;
+  background-image: url("https://cdn.hipwallpaper.com/i/46/65/hEiUkp.jpg");
+  background-size: cover;
+  color: white;
+}
+
+.button {
+    margin: 10px 10px;
+}
+
+p {
+    font-size: 2rem;
+}
+
+.computer-cards {
+    grid-area: computer;
+    text-align: center;
+}
+
+.betting-container {
+    grid-area: bets;
+    padding: 10%;
+}
+
+.betting-button-group {
+    position: relative;
+    top: 50px;
+}
+
+#double {
+    margin-top: 6vh;
+}
+
+.player-cards {
+    grid-area: player;
+    text-align: center;
+}
+
+.play-button-container{
+    grid-area: play;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10%;
+}
+
+main {
+    width: 100vw;
+    height: 95vh;
+    display: grid;
+    grid-template-columns: [first] 2fr [line2] 10fr [line3] 2fr [end];
+    grid-template-rows: [topLine] 50% [middle] 50% [bottomLine];
+    grid-template-areas: 
+    ". computer ."
+    "bets player play";
+    position: relative;
+}
+
+
+
+
