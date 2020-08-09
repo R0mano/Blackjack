@@ -11,17 +11,24 @@
     />
     <link rel="stylesheet" href="css/card-deck-css/css/cardstarter.css" />
     <link rel="stylesheet" href="css/main.css" />
-    <script defer src="js/main.j"></script>
+    <script defer src="js/main.js"></script>
     <title>Blackjack</title>
   </head>
   <body>
+
+
+
+
+
+
+
     <main>
-      <div class="computer-cards">Computer cards</div>
+      <div id="computer-cards" class="computer-cards">Computer cards</div>
 
       <div class="betting-container">
-        <p>Stack: $</p>
+        <p id="stack">Stack: $</p>
         <br />
-        <p>Bet: $</p>
+        <p id="bet">Bet: $</p>
         <div class="betting-button-group">
           <div class="btn-group button" role="group">
             <button type="button" class="btn btn-lg btn-light" id="minus">
@@ -39,13 +46,23 @@
         </div>
       </div>
 
-      <div class="player-cards">Player's cards</div>
+      <div id="player-cards" class="player-cards">Player's cards</div>
 
       <div class="play-button-container">
         <button class="btn btn-lg btn-danger button" id="hit">Hit</button>
         <button class="btn btn-lg btn-success button" id="stay">Stay</button>
       </div>
     </main>
+
+
+
+
+
+
+
+
+
+
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

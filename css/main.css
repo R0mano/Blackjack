@@ -47,9 +47,9 @@ p {
 
 .play-button-container{
     grid-area: play;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    display: grid;
+    /* flex-direction: column; */
+    /* justify-content: ; */
     padding: 10%;
 }
 
