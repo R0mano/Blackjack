@@ -22,7 +22,6 @@ const limit = 21;
 const masterDeck = buildMasterDeck();
 renderDeckInContainer(masterDeck, document.querySelector(".computer-cards"));
 
-
 /*----- app's state (variables) -----*/
 let shuffledDeck;
 let stack;
@@ -36,7 +35,7 @@ const playerCardContainer = document.querySelector("#computer-cards");
 const computerCardContainer = document.querySelector("#computer-cards");
 const plusButton = document.querySelector("#plus");
 const minusButton = document.querySelector("#minus");
-const setButton = document.querySelector("#set");
+const dealButton = document.querySelector("#deal");
 const doubleButton = document.querySelector("#double");
 const hitButton = document.querySelector("#hit");
 const stayButton = document.querySelector("#stay");
@@ -44,40 +43,86 @@ const chipStack = document.querySelector("#stack");
 const currentBet = document.querySelector("#bet");
 
 /*----- event listeners -----*/
-
+document.querySelector(".btn-group").addEventListener("click", addBet);
+// document.querySelector(".deal").addEventListener("click", deal);
 
 /*----- functions -----*/
 
 function init() {
-    stack = 100;
-    bet = 0;
-    playerHand = null;
-    dealerHand = null;
-    
-
+  stack = 100;
+  bet = 0;
+  playerHand = [];
+  dealerHand = [];
+  buildAndShuffleTripleDeck();
+  render();
 }
 
-function builtTripleDeck(deck) {
-    deck.forEach(function(card) {
-      deck.push(card);
-      deck.push(card);
-    });
-    return deck;
+function render() {
+  currentBet.textContent = bet;
+  chipStack.textContent = stack;
+
+  minusButton.style.visibility = "hidden";
+  plusButton.style.visibility = "hidden";
+  dealButton.style.visibility = "hidden";
+  doubleButton.style.visibility = "hidden";
+  hitButton.style.visibility = "hidden";
+  stayButton.style.visibility = "hidden";
+
+  if (bet === 0 && dealerHand.length === 0 && playerHand.length === 0) {
+    plusButton.style.visibility = "visible";
   }
 
-function renderShuffledDeck() {
+  if (bet > 0 && stack === 0 && dealerHand.length === 0 && playerHand.length === 0) {
+    minusButton.style.visibility = "visible";
+    dealButton.style.visibility = "visible";
+  }
+
+  if (bet > 0 && stack > 0 && dealerHand.length === 0 && playerHand.length === 0) {
+    minusButton.style.visibility = "visible";
+    dealButton.style.visibility = "visible";
+    plusButton.style.visibility = "visible";
+  }
+}
+
+function addBet(e) {
+
+  if (e.target.id === "plus") {
+    if (stack > 0) {
+      bet += 5;
+      stack -= 5;
+      render();
+    }
+    
+  } else if (e.target.id === "minus") {
+    bet -= 5;
+    stack += 5;
+    render();
+  }
+}
+
+function deal() {}
+
+function builtTripleDeck(deck) {
+  deck.forEach(function (card) {
+    deck.push(card);
+    deck.push(card);
+  });
+  return deck;
+}
+
+function buildAndShuffleTripleDeck() {
   // Create a copy of the masterDeck (leave masterDeck untouched!)
   const tempDeck = [...masterDeck];
   shuffledDeck = [];
   builtTripleDeck(tempDeck);
-  
+
   while (tempDeck.length) {
     // Get a random index for a card still in the tempDeck
     const rndIdx = Math.floor(Math.random() * tempDeck.length);
     // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
     shuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
   }
-//   renderDeckInContainer(shuffledDeck, playerCardContainer);
+  //   renderDeckInContainer(shuffledDeck, playerCardContainer);
 }
 
 function renderDeckInContainer(deck, container) {
@@ -106,4 +151,4 @@ function buildMasterDeck() {
   return deck;
 }
 
-renderShuffledDeck();
+// renderShuffledDeck();
