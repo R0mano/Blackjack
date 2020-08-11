@@ -33,11 +33,11 @@ p {
 
 .betting-button-group {
     position: relative;
-    top: 50px;
+    top: 40px;
 }
 
 #double {
-    margin-top: 6vh;
+    margin-top: 4vh;
 }
 
 .player-cards {
