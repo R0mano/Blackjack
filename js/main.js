@@ -18,9 +18,7 @@ const ranks = [
 
 const limit = 21;
 
-// Build a 'master' deck of 'card' objects used to create shuffled decks
 const masterDeck = buildMasterDeck();
-// renderDeckInContainer(masterDeck, document.querySelector(".computer-cards"));
 
 /*----- app's state (variables) -----*/
 let shuffledDeck;
@@ -32,9 +30,8 @@ let winner;
 let stay;
 
 /*----- cached element references -----*/
-// const shuffledContainer = document.querySelector('.player-cards');
 const playerCardContainer = document.querySelector("#player-cards");
-const computerCardContainer = document.querySelector("#computer-cards");
+const dealerCardsContainer = document.querySelector("#dealer-cards");
 const plusButton = document.querySelector("#plus");
 const minusButton = document.querySelector("#minus");
 const dealButton = document.querySelector("#deal");
@@ -44,8 +41,12 @@ const stayButton = document.querySelector("#stay");
 const chipStack = document.querySelector("#stack");
 const currentBet = document.querySelector("#bet");
 const replayButton = document.querySelector("#replay");
+const playerHandCount = document.querySelector('#player-hand');
+const dealerHandCount = document.querySelector('#dealer-hand');
+const winningMessage = document.querySelector('#winning-message');
 
 /*----- event listeners -----*/
+document.querySelector(".btn-group").addEventListener("click", addBet);
 document.querySelector(".btn-group").addEventListener("click", addBet);
 document.querySelector("#deal").addEventListener("click", deal);
 document.querySelector("#hit").addEventListener("click", deal);
@@ -70,7 +71,9 @@ function replay() {
   bet = 0;
   winner = null;
   stay = false;
-  document.querySelector("#message").remove();
+  winningMessage.textContent = '';
+  playerHandCount.textContent = '';
+  dealerHandCount.textContent = '';
   let usedCards = playerHand.concat(dealerHand);
   usedCards.forEach((card) => {
     shuffledDeck.push(card);
@@ -86,7 +89,10 @@ function render() {
   chipStack.textContent = stack;
 
   playerCardContainer.innerHTML = "";
-  computerCardContainer.innerHTML = "";
+  dealerCardsContainer.innerHTML = "";
+  if (playerHand.length > 0) {
+    playerHandCount.textContent = checkTotal(playerHand);
+  }
 
   minusButton.style.visibility = "hidden";
   plusButton.style.visibility = "hidden";
@@ -124,7 +130,7 @@ function render() {
   if (bet > 0 && dealerHand.length > 0 && playerHand.length > 0) {
     hitButton.style.visibility = "visible";
     stayButton.style.visibility = "visible";
-    renderHandInContainer(dealerHand, computerCardContainer);
+    renderHandInContainer(dealerHand, dealerCardsContainer);
     renderHandInContainer(playerHand, playerCardContainer);
   }
 
@@ -139,17 +145,15 @@ function render() {
     doubleButton.style.visibility = "hidden";
     hitButton.style.visibility = "hidden";
     stayButton.style.visibility = "hidden";
-    renderHandInContainer(dealerHand, computerCardContainer);
+    dealerHandCount.textContent = checkTotal(dealerHand);
+    renderHandInContainer(dealerHand, dealerCardsContainer);
     renderHandInContainer(playerHand, playerCardContainer);
   }
 
   if (winner) {
-    renderHandInContainer(dealerHand, computerCardContainer);
+    renderHandInContainer(dealerHand, dealerCardsContainer);
     renderHandInContainer(playerHand, playerCardContainer);
-    let message = document.createElement("h2");
-    message.setAttribute("id", "message");
-    message.innerHTML = `${winner}`;
-    computerCardContainer.after(message);
+    winningMessage.textContent = winner;
     replayButton.style.visibility = "visible";
   }
 
@@ -224,7 +228,7 @@ function dealerPlay() {
 
 function gameOver() {
   if (playerHand.length === 2 && checkTotal(playerHand) === limit) {
-    winner = `Blackjack! You win ${bet * 1.5}`;
+    winner = `Blackjack! You win ${bet * 3/2}`;
     stack += bet * 2.5;
     bet = 0;
   }
@@ -237,7 +241,7 @@ function gameOver() {
       checkTotal(dealerHand) === limit &&
       checkTotal(playerHand) !== limit)
   ) {
-    winner = "You lose!";
+    winner = `You lose!`;
     bet = 0;
   } else if (
     (checkTotal(playerHand) <= limit && checkTotal(dealerHand) > limit) ||
@@ -249,7 +253,7 @@ function gameOver() {
     stack += bet * 2;
     bet = 0;
   } else if (checkTotal(playerHand) === checkTotal(dealerHand)) {
-    winner = "Stand Off!";
+    winner = `Stand Off!`;
     stack += bet;
     bet = 0;
   }

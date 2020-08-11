@@ -2,69 +2,258 @@
   box-sizing: border-box;
 }
 
-
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  font-family: Helvetica;
+  font-family: 'Abril Fatface', Helvetica;
   background-image: url("https://cdn.hipwallpaper.com/i/46/65/hEiUkp.jpg");
   background-size: cover;
   color: white;
 }
 
 .button {
-    margin: 10px 10px;
+  margin: 10px 10px;
 }
 
 p {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
-.computer-cards {
-    grid-area: computer;
-    text-align: center;
+.deck {
+  grid-area: deck;
+}
+
+.card-deck {
+  transform: translate(15vw, 5vh) rotate(-25deg);
+}
+
+.dealer-cards {
+  grid-area: computer;
+  text-align: center;
+}
+
+.dealer-hand {
+  grid-area: dealerH;
 }
 
 .betting-container {
-    grid-area: bets;
-    padding: 10%;
+  grid-area: bets;
+  display: grid;
+}
+
+.bet-info{
+    text-align: center;
+    margin-left: 10vw;
+}
+
+[id="5"] {
+    position: relative;
+    display: block;
+    margin: 30px auto;
+    width: 100px;
+    height: 100px;
+    border: 13px dashed white;
+    border-radius: 50%;
+    line-height: 100px;
+    text-align: center;
+    font-family: Helvetica;
+    color: white;
+  }
+  [id="5"]:before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -17px;
+    border-radius: 50%;
+    background: rgb(149, 149, 149);
+    content: "$5";
+  }
+  [id="5"]:after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 9px;
+    border: 3px dashed white;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    content: "";
+  }
+
+  [id="10"] {
+    position: relative;
+    display: block;
+    margin: 30px auto;
+    width: 100px;
+    height: 100px;
+    border: 13px dashed white;
+    border-radius: 50%;
+    line-height: 100px;
+    text-align: center;
+    font-family: Helvetica;
+    color: white;
+  }
+  [id="10"]:before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -17px;
+    border-radius: 50%;
+    background: rgb(130, 23, 25);
+    content: "$10";
+  }
+  [id="10"]:after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 9px;
+    border: 3px dashed white;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    content: "";
+  }
+
+  [id="50"] {
+    position: relative;
+    display: block;
+    margin: 30px auto;
+    width: 100px;
+    height: 100px;
+    border: 13px dashed white;
+    border-radius: 50%;
+    line-height: 100px;
+    text-align: center;
+    font-family: Helvetica;
+    color: white;
+  }
+  [id="50"]:before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -17px;
+    border-radius: 50%;
+    background: rgb(32, 32, 32);
+    content: "$50";
+  }
+  [id="50"]:after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 9px;
+    border: 3px dashed white;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    content: "";
+  }
+
+  [id="100"] {
+    position: relative;
+    display: block;
+    margin: 30px auto;
+    width: 100px;
+    height: 100px;
+    border: 13px dashed white;
+    border-radius: 50%;
+    line-height: 100px;
+    text-align: center;
+    font-family: Helvetica;
+    color: white;
+  }
+  [id="100"]:before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -17px;
+    border-radius: 50%;
+    background: rgb(0, 51, 150);
+    content: "$100";
+  }
+  [id="100"]:after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 9px;
+    border: 3px dashed white;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    content: "";
+  }
+
+.chips {
+    display: flex;
+    flex-direction: row;
+    align-self: end;
+}
+
+
+.player-cards {
+  grid-area: player;
+  text-align: center;
+}
+
+.player-hand {
+  grid-area: playerH;
+}
+
+.play-button-container {
+  grid-area: play;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.chip-stack {
+    align-self: center;
+}
+
+.chip-stack-info {
+    margin: 0;
 }
 
 .betting-button-group {
-    position: relative;
-    top: 40px;
+  grid-area: play;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
 }
 
 #double {
-    margin-top: 4vh;
-}
-
-.player-cards {
-    grid-area: player;
-    text-align: center;
-}
-
-.play-button-container{
-    grid-area: play;
-    display: grid;
-    /* flex-direction: column; */
-    /* justify-content: ; */
-    padding: 10%;
+  /* margin-top: 4vh; */
 }
 
 main {
-    width: 100vw;
-    height: 95vh;
-    display: grid;
-    grid-template-columns: [first] 2fr [line2] 10fr [line3] 2fr [end];
-    grid-template-rows: [topLine] 50% [middle] 50% [bottomLine];
-    grid-template-areas: 
-    ". computer ."
-    "bets player play";
-    position: relative;
+  width: 100vw;
+  height: 99vh;
+  display: grid;
+  grid-template-columns: [first] 4fr [line2] 4fr [line3] 4fr [end];
+  grid-template-rows: [topLine] 45% [secondLine] 45% [thirdLine] 10% [bottomLine];
+  grid-template-areas:
+    "deck computer dealerH"
+    "bets player playerH"
+    "play play play";
+  position: relative;
 }
-
-
-
-
