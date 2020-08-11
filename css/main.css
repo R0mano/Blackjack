@@ -14,10 +14,20 @@ body {
 
 .button {
   margin: 10px 10px;
+  min-width: 100px;
 }
 
 p {
-  font-size: 2rem;
+  font-size: 3rem;
+  color: goldenrod; /* Will override color (regardless of order) */
+  /* -webkit-text-stroke-width: 1px; */
+  /* -webkit-text-stroke-color: black; */
+  text-shadow:
+       /* 3px 3px 0 #000, */
+      -1px -1px 0 #000,
+      1px -1px 0 #000
+     /* -1px 1px 0 #000,
+       1px 1px 0 #000; */
 }
 
 .deck {
