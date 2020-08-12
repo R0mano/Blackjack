@@ -116,7 +116,6 @@ function render() {
   currentBet.textContent = bet;
   chipStack.textContent = stack;
 
-  
 
   if (stack >=100) {
     document.querySelector('.second').style.visibility = "visible";
@@ -128,7 +127,7 @@ function render() {
   } else {
     document.querySelector('.third').style.visibility = "hidden";
   }
-  if(stack > 500) {
+  if (stack > 500) {
     document.querySelector('.first').style.visibility = "visible";
   } else {
     document.querySelector('.first').style.visibility = "hidden";
@@ -136,6 +135,8 @@ function render() {
 
   playerCardContainer.innerHTML = "";
   dealerCardsContainer.innerHTML = "";
+  winningMessage.textContent = "";
+
 
   dealButton.style.visibility = "hidden";
   doubleButton.style.visibility = "hidden";
@@ -143,6 +144,10 @@ function render() {
   stayButton.style.visibility = "hidden";
   replayButton.style.visibility = "hidden";
   resetButton.style.visibility = "hidden";
+
+  if (bet === 0 && playerHand.length === 0 && dealerHand.length === 0) {
+    winningMessage.textContent = "Click on the chips to place your bet"
+  }
 
   if (playerHand.length > 0) {
     playerHandCount.textContent = checkTotal(playerHand);
@@ -266,8 +271,7 @@ function dealerPlay() {
   stay = true;
   while (checkTotal(dealerHand) < 17) {
     dealerHand.push(shuffledDeck.splice(0, 1)[0]);
-  }
-  ;
+  };
   setTimeout(() => {
     render();
     gameOver();
@@ -280,7 +284,7 @@ function gameOver() {
     coinsSound.play();
     winner = `Blackjack! You win: $ ${bet * 3/2}`;
     stack += bet * 3/2;
-    // bet = 0;
+    
   } else if (
     checkTotal(playerHand) > limit ||
     (checkTotal(playerHand) <= limit &&
@@ -291,7 +295,7 @@ function gameOver() {
       checkTotal(playerHand) !== limit) && stay
   ) {
     winner = `You lose!`;
-    // bet = 0;
+    
   } else if (
     (checkTotal(playerHand) <= limit && checkTotal(dealerHand) > limit) ||
     (checkTotal(playerHand) <= limit &&
@@ -302,11 +306,10 @@ function gameOver() {
     coinsSound.play();
     winner = `You win: $ ${bet * 2}`;
     stack += bet * 2;
-    // bet = 0;
+
   } else if (checkTotal(playerHand) === checkTotal(dealerHand) && stay) {
     winner = `Stand Off!`;
     stack += bet;
-    // bet = 0;
   }
   render();
 }
