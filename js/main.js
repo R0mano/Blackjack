@@ -179,14 +179,15 @@ function render() {
   }
 
   if (winner) {
-    renderHandInContainer(dealerHand, dealerCardsContainer);
-    renderHandInContainer(playerHand, playerCardContainer);
     winningMessage.textContent = winner;
     replayButton.style.visibility = "visible";
+    renderHandInContainer(dealerHand, dealerCardsContainer);
+    renderHandInContainer(playerHand, playerCardContainer);
   }
 
   if (stack === 0 && bet === 0) {
     winningMessage.textContent = "You're broke. Go to the ATM or refresh the page to continue.";
+    replayButton.style.visibility = "hidden";
   }
 }
 
@@ -213,7 +214,7 @@ function deal() {
   } else {
     playerHand.push(shuffledDeck.splice(0, 1)[0]);
   }
-  render();
+  
   if (checkTotal(playerHand) > limit) {
     gameOver();
   }
@@ -223,6 +224,7 @@ function deal() {
   if (checkTotal(playerHand) === limit) {
     dealerPlay();
   }
+  render();
 }
 
 function double() {

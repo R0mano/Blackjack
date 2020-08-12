@@ -41,6 +41,8 @@ p {
 .dealer-cards {
   grid-area: computer;
   text-align: center;
+  justify-self: flex-start;
+  margin-left: 2vw;
 }
 
 .dealer-hand {
@@ -224,9 +226,13 @@ p {
 }
 
 
+
+
 .player-cards {
   grid-area: player;
   text-align: center;
+  justify-self: flex-start;
+  margin-left: 2vw;
 }
 
 .player-hand {
@@ -264,7 +270,7 @@ main {
   width: 100vw;
   height: 99vh;
   display: grid;
-  grid-template-columns: [first] 4fr [line2] 4fr [line3] 4fr [end];
+  grid-template-columns: [first] 5fr [line2] 3fr [line3] 4fr [end];
   grid-template-rows: [topLine] 45% [secondLine] 45% [thirdLine] 10% [bottomLine];
   grid-template-areas:
     "deck computer dealerH"
