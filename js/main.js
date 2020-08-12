@@ -116,11 +116,26 @@ function render() {
   currentBet.textContent = bet;
   chipStack.textContent = stack;
 
+  
+
+  if (stack >=100) {
+    document.querySelector('.second').style.visibility = "visible";
+  } else {
+    document.querySelector('.second').style.visibility = "hidden";
+  }
+  if (stack >= 250) {
+    document.querySelector('.third').style.visibility = "visible";
+  } else {
+    document.querySelector('.third').style.visibility = "hidden";
+  }
+  if(stack > 500) {
+    document.querySelector('.first').style.visibility = "visible";
+  } else {
+    document.querySelector('.first').style.visibility = "hidden";
+  }
+
   playerCardContainer.innerHTML = "";
   dealerCardsContainer.innerHTML = "";
-  if (playerHand.length > 0) {
-    playerHandCount.textContent = checkTotal(playerHand);
-  }
 
   dealButton.style.visibility = "hidden";
   doubleButton.style.visibility = "hidden";
@@ -129,8 +144,8 @@ function render() {
   replayButton.style.visibility = "hidden";
   resetButton.style.visibility = "hidden";
 
-  if (bet === 0 && dealerHand.length === 0 && playerHand.length === 0) {
-
+  if (playerHand.length > 0) {
+    playerHandCount.textContent = checkTotal(playerHand);
   }
 
   if (
@@ -181,6 +196,11 @@ function render() {
   if (winner) {
     winningMessage.textContent = winner;
     replayButton.style.visibility = "visible";
+    dealButton.style.visibility = "hidden";
+    doubleButton.style.visibility = "hidden";
+    hitButton.style.visibility = "hidden";
+    stayButton.style.visibility = "hidden";
+    dealerHandCount.textContent = checkTotal(dealerHand);
     renderHandInContainer(dealerHand, dealerCardsContainer);
     renderHandInContainer(playerHand, playerCardContainer);
   }
@@ -214,17 +234,10 @@ function deal() {
   } else {
     playerHand.push(shuffledDeck.splice(0, 1)[0]);
   }
-  
-  if (checkTotal(playerHand) > limit) {
-    gameOver();
-  }
-  if ((checkTotal(playerHand) === limit && playerHand.length === 2)) {
-    gameOver();
-  }
   if (checkTotal(playerHand) === limit) {
     dealerPlay();
   }
-  render();
+  setTimeout(gameOver(), 600);
 }
 
 function double() {
@@ -262,38 +275,38 @@ function dealerPlay() {
 }
 
 function gameOver() {
-  if (playerHand.length === 2 && checkTotal(playerHand) === limit) {
+  if (checkTotal(playerHand) === limit && playerHand.length === 2 ) {
     cashRegisterSound.play();
     coinsSound.play();
     winner = `Blackjack! You win: $ ${bet * 3/2}`;
     stack += bet * 3/2;
-    bet = 0;
+    // bet = 0;
   } else if (
     checkTotal(playerHand) > limit ||
     (checkTotal(playerHand) <= limit &&
       checkTotal(dealerHand) <= limit &&
-      checkTotal(playerHand) < checkTotal(dealerHand)) ||
+      checkTotal(playerHand) < checkTotal(dealerHand)) && stay||
     (dealerHand.length === 2 &&
       checkTotal(dealerHand) === limit &&
-      checkTotal(playerHand) !== limit)
+      checkTotal(playerHand) !== limit) && stay
   ) {
     winner = `You lose!`;
-    bet = 0;
+    // bet = 0;
   } else if (
     (checkTotal(playerHand) <= limit && checkTotal(dealerHand) > limit) ||
     (checkTotal(playerHand) <= limit &&
       checkTotal(dealerHand) <= limit &&
-      checkTotal(playerHand) > checkTotal(dealerHand))
+      checkTotal(playerHand) > checkTotal(dealerHand)) && stay
   ) {
     cashRegisterSound.play();
     coinsSound.play();
     winner = `You win: $ ${bet * 2}`;
     stack += bet * 2;
-    bet = 0;
-  } else if (checkTotal(playerHand) === checkTotal(dealerHand)) {
+    // bet = 0;
+  } else if (checkTotal(playerHand) === checkTotal(dealerHand) && stay) {
     winner = `Stand Off!`;
     stack += bet;
-    bet = 0;
+    // bet = 0;
   }
   render();
 }

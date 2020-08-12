@@ -225,9 +225,6 @@ p {
     align-self: end;
 }
 
-
-
-
 .player-cards {
   grid-area: player;
   text-align: center;
@@ -279,20 +276,41 @@ main {
   position: relative;
 }
 
-.chip-img{
+.chip-img {
     max-width: 18vw;
     position: absolute;
-    left: 2vw;
-    top: 18vh;
+    left: 8vw;
+    top: 17vh;
     z-index: -11;
     transform: rotateY(40deg);
 }
 
-.second {
-    max-width: 18vw;
+.first {
+    visibility: hidden;
+    max-width: 15vw;
     position: absolute;
-    left: 3vw;
-    top: 23vh;
+    left: 8vw;
+    top: 40vh;
+    z-index: -11;
+    transform: rotateY(40deg);
+}
+
+.second{
+    visibility: hidden;
+    max-width: 15vw;
+    position: absolute;
+    left: 2vw;
+    top: 40vh;
+    z-index: -11;
+    transform: rotateY(40deg);
+}
+
+.third {
+    visibility: hidden;
+    max-width: 15vw;
+    position: absolute;
+    left: 5vw;
+    top: 47vh;
     z-index: -11;
     transform: rotateY(40deg);
 }
