@@ -28,8 +28,8 @@
      droppable place, like an empty pile. */ }
   .card.small {
     font-size: 12px; }
-  .card.large {
-    font-size: 26px; }
+  /* .card.large {
+    font-size: 26px; } */
   .card.xlarge {
     font-size: 42px; }
   .card.no-border {
@@ -347,3 +347,14 @@
   .card.E.shadow {
     box-shadow: -2px 2px 3px 0 rgba(41, 41, 41, 0.75); }
 
+
+@media only screen and (max-width: 1024px) {
+
+  .card {
+    margin: 5px -90px 50px 5px;
+  }
+
+  .card.large {
+  font-size: 26px; 
+  }
+}

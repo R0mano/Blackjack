@@ -12,32 +12,17 @@ body {
   color: white;
 }
 
-.button {
-  margin: 10px 10px;
-  min-width: 80px;
-  min-height: 80px;
-  border: solid 7px gold;
-  color: beige;
-  border-radius: 50%;
-  align-self: flex-end;
-}
-
-#reset, #stay {
-  background-color: rgb(202, 68, 74);
-}
-
-#deal, #hit, #replay {
-  background-color: rgb(83, 164, 81);
-}
-
-#double {
-  background-color: rgb(49, 124, 245);
-}
-
-
-
-.button:hover {
-  border: solid 7px goldenrod;
+main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: [first] 5fr [line2] 3fr [line3] 4fr [end];
+  grid-template-rows: [topLine] 45% [secondLine] 45% [thirdLine] 10% [bottomLine];
+  grid-template-areas:
+    "deck computer dealerH"
+    "bets player playerH"
+    "play play play";
+  position: relative;
 }
 
 p {
@@ -119,7 +104,6 @@ p {
     background: rgba(0, 0, 0, 0.4);
     content: "";
   }
-
   [id="10"] {
     position: relative;
     display: block;
@@ -158,7 +142,6 @@ p {
     background: rgba(0, 0, 0, 0.4);
     content: "";
   }
-
   [id="50"] {
     position: relative;
     display: block;
@@ -197,7 +180,6 @@ p {
     background: rgba(0, 0, 0, 0.4);
     content: "";
   }
-
   [id="100"] {
     position: relative;
     display: block;
@@ -265,6 +247,32 @@ p {
   justify-content: center;
 }
 
+.button {
+  margin: 10px 10px;
+  min-width: 80px;
+  min-height: 80px;
+  border: solid 7px gold;
+  color: beige;
+  border-radius: 50%;
+  align-self: flex-end;
+}
+
+#reset, #stay {
+  background-color: rgb(202, 68, 74);
+}
+
+#deal, #hit, #replay {
+  background-color: rgb(83, 164, 81);
+}
+
+#double {
+  background-color: rgb(49, 124, 245);
+}
+
+.button:hover {
+  border: solid 7px goldenrod;
+}
+
 .chip-stack {
     align-self: center;
 }
@@ -278,20 +286,6 @@ p {
   display: flex;
   flex-direction: row;
   padding: 0;
-}
-
-
-main {
-  width: 100vw;
-  height: 99vh;
-  display: grid;
-  grid-template-columns: [first] 5fr [line2] 3fr [line3] 4fr [end];
-  grid-template-rows: [topLine] 45% [secondLine] 45% [thirdLine] 10% [bottomLine];
-  grid-template-areas:
-    "deck computer dealerH"
-    "bets player playerH"
-    "play play play";
-  position: relative;
 }
 
 .chip-img {
@@ -333,3 +327,21 @@ main {
     transform: rotateY(40deg);
 }
 
+@media only screen and (max-width: 1024px) {
+  p {
+    font-size: 1.5rem;
+  }
+
+  #player-cards, #dealer-cards {
+      text-align: start;
+      margin-left: -10vw;
+  }
+
+  .bet-info{
+    align-self: flex-end;
+  }
+
+  #player-hand, #dealer-hand {
+    margin-left: 0;
+  }
+}
