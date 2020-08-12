@@ -1,4 +1,8 @@
 /*----- constants -----*/
+
+const chipsSound = new Audio('audio/Poker chips hit settle felt table_BLASTWAVEFX_16064.wav');
+
+
 const suits = ["s", "c", "d", "h"];
 const ranks = [
   "02",
@@ -56,7 +60,10 @@ hitButton.addEventListener("click", deal);
 stayButton.addEventListener("click", dealerPlay);
 doubleButton.addEventListener("click", double);
 replayButton.addEventListener("click", replay);
-chips.addEventListener('click', addBet);
+chips.addEventListener('click', (e) => {
+  addBet(e);
+  chipsSound.play();
+});
 resetButton.addEventListener('click', addBet);
 
 /*----- functions -----*/
@@ -180,6 +187,7 @@ function render() {
 }
 
 function addBet(e) {
+  
   // if (e.target.id === "plus") {
   //   if (stack > 0) {
   //     bet += 5;

@@ -47,6 +47,10 @@ p {
   grid-area: dealerH;
 }
 
+#dealer-hand {
+    margin-left: 10vh;
+}
+
 .betting-container {
   grid-area: bets;
   display: grid;
@@ -229,6 +233,10 @@ p {
   grid-area: playerH;
 }
 
+#player-hand {
+    margin-left: 10vh;
+}
+
 .play-button-container {
   grid-area: play;
   display: flex;
@@ -251,9 +259,6 @@ p {
   padding: 0;
 }
 
-#double {
-  /* margin-top: 4vh; */
-}
 
 main {
   width: 100vw;
@@ -267,3 +272,22 @@ main {
     "play play play";
   position: relative;
 }
+
+.chip-img{
+    max-width: 18vw;
+    position: absolute;
+    left: 2vw;
+    top: 18vh;
+    z-index: -11;
+    transform: rotateY(40deg);
+}
+
+.second {
+    max-width: 18vw;
+    position: absolute;
+    left: 3vw;
+    top: 23vh;
+    z-index: -11;
+    transform: rotateY(40deg);
+}
+
