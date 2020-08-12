@@ -1,6 +1,9 @@
 /*----- constants -----*/
 
 const chipsSound = new Audio('audio/Poker chips hit settle felt table_BLASTWAVEFX_16064.wav');
+const cardDown = new Audio('audio/MB_Card_Down_06.wav');
+const coinsSound = new Audio('audio/Coins drop multiple wood surface large pile_BLASTWAVEFX_23512.wav');
+const cashRegisterSound = new Audio('audio/Springy antique cash register lever and bell quickly.wav');
 
 
 const suits = ["s", "c", "d", "h"];
@@ -39,8 +42,6 @@ const playerCardContainer = document.querySelector("#player-cards");
 const dealerCardsContainer = document.querySelector("#dealer-cards");
 const resetButton = document.querySelector("#reset");
 const chips = document.querySelector(".chips");
-// const plusButton = document.querySelector("#plus");
-// const minusButton = document.querySelector("#minus");
 const dealButton = document.querySelector("#deal");
 const doubleButton = document.querySelector("#double");
 const hitButton = document.querySelector("#hit");
@@ -54,17 +55,29 @@ const winningMessage = document.querySelector('#winning-message');
 
 
 /*----- event listeners -----*/
-// document.querySelector(".btn-group").addEventListener("click", addBet);
-dealButton.addEventListener("click", deal);
-hitButton.addEventListener("click", deal);
-stayButton.addEventListener("click", dealerPlay);
-doubleButton.addEventListener("click", double);
-replayButton.addEventListener("click", replay);
-chips.addEventListener('click', (e) => {
-  addBet(e);
-  chipsSound.play();
+dealButton.addEventListener("click", () => {
+  cardDown.play();
+  deal();
 });
+
+
+hitButton.addEventListener("click", () => {
+  cardDown.play();
+  deal();
+});
+
+stayButton.addEventListener("click", dealerPlay);
+
+doubleButton.addEventListener("click", () => {
+  cardDown.play();
+  double();
+});
+
+chips.addEventListener('click', addBet);
+
 resetButton.addEventListener('click', addBet);
+
+replayButton.addEventListener("click", replay);
 
 /*----- functions -----*/
 
@@ -109,8 +122,6 @@ function render() {
     playerHandCount.textContent = checkTotal(playerHand);
   }
 
-  // minusButton.style.visibility = "hidden";
-  // plusButton.style.visibility = "hidden";
   dealButton.style.visibility = "hidden";
   doubleButton.style.visibility = "hidden";
   hitButton.style.visibility = "hidden";
@@ -120,7 +131,6 @@ function render() {
 
   if (bet === 0 && dealerHand.length === 0 && playerHand.length === 0) {
 
-    // plusButton.style.visibility = "visible";
   }
 
   if (
@@ -129,7 +139,6 @@ function render() {
     dealerHand.length === 0 &&
     playerHand.length === 0
   ) {
-    // minusButton.style.visibility = "visible";
     resetButton.style.visibility = "visible";
     dealButton.style.visibility = "visible";
   }
@@ -142,15 +151,13 @@ function render() {
   ) {
     resetButton.style.visibility = "visible";
     dealButton.style.visibility = "visible";
-    // minusButton.style.visibility = "visible";
-    // plusButton.style.visibility = "visible";
   }
 
   if (bet > 0 && dealerHand.length > 0 && playerHand.length > 0) {
     hitButton.style.visibility = "visible";
     stayButton.style.visibility = "visible";
-    renderHandInContainer(dealerHand, dealerCardsContainer);
-    renderHandInContainer(playerHand, playerCardContainer);
+    setTimeout(renderHandInContainer(dealerHand, dealerCardsContainer), 2000);
+    setTimeout(renderHandInContainer(playerHand, playerCardContainer), 2000);
   }
 
   if (playerHand.length === 2) {
@@ -162,8 +169,6 @@ function render() {
   }
 
   if (stay) {
-    // minusButton.style.visibility = "hidden";
-    // plusButton.style.visibility = "hidden";
     dealButton.style.visibility = "hidden";
     doubleButton.style.visibility = "hidden";
     hitButton.style.visibility = "hidden";
@@ -182,23 +187,11 @@ function render() {
 
   if (stack === 0 && bet === 0) {
     winningMessage.textContent = "You're broke. Go to the ATM or refresh the page to continue.";
-    //message: You're broke. Go to the ATM or refresh the page to continue
   }
 }
 
 function addBet(e) {
-  
-  // if (e.target.id === "plus") {
-  //   if (stack > 0) {
-  //     bet += 5;
-  //     stack -= 5;
-  //     render();
-  //   }
-  // } else if (e.target.id === "minus") {
-  //   bet -= 5;
-  //   stack += 5;
-  //   render();
-  // } else 
+  console.log(e.target.id)
   if (stack >= parseInt(e.target.id)) {
     bet += parseInt(e.target.id);
     stack -= parseInt(e.target.id);
@@ -209,6 +202,7 @@ function addBet(e) {
     bet = 0;
     render();
   }
+  chipsSound.play();
 }
 
 function deal() {
@@ -258,17 +252,21 @@ function dealerPlay() {
   while (checkTotal(dealerHand) < 17) {
     dealerHand.push(shuffledDeck.splice(0, 1)[0]);
   }
-  render();
-  gameOver();
+  ;
+  setTimeout(() => {
+    render();
+    gameOver();
+  }, 600);
 }
 
 function gameOver() {
   if (playerHand.length === 2 && checkTotal(playerHand) === limit) {
+    cashRegisterSound.play();
+    coinsSound.play();
     winner = `Blackjack! You win: $ ${bet * 3/2}`;
     stack += bet * 3/2;
     bet = 0;
-  }
-  if (
+  } else if (
     checkTotal(playerHand) > limit ||
     (checkTotal(playerHand) <= limit &&
       checkTotal(dealerHand) <= limit &&
@@ -285,6 +283,8 @@ function gameOver() {
       checkTotal(dealerHand) <= limit &&
       checkTotal(playerHand) > checkTotal(dealerHand))
   ) {
+    cashRegisterSound.play();
+    coinsSound.play();
     winner = `You win: $ ${bet * 2}`;
     stack += bet * 2;
     bet = 0;
@@ -325,6 +325,7 @@ function renderHandInContainer(hand, container) {
   }, "");
   container.innerHTML = cardsHtml;
   if (hand === dealerHand && dealerHand.length <= 2 && stay === false) {
+    
     container.firstChild.classList.add("back-red");
   }
   if (stay) {
