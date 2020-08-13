@@ -37,5 +37,5 @@ Chip Stack image: (https://www.netclipart.com/isee/TToTTh_poker-chips-clipart-re
 ## technologies used:
 Plain HTML, CSS, JavScript  
 
-##[Play BlackJack] (https://r0mano.github.io/Blackjack/)
+## [Play BlackJack] (https://r0mano.github.io/Blackjack/)
 
