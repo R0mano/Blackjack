@@ -283,6 +283,8 @@ p {
 
 .chip-stack {
     align-self: center;
+    position: absolute;
+    left: 20px;
 }
 
 .chip-stack-info {
