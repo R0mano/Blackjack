@@ -16,15 +16,15 @@ Beating the dealer pays 2 for 1. BlackJack (two cards: one Ace, one of a value o
 "Split" and "Insurance" are unavailable in this version.
 
 ## Features:
-- Click on the chips to place your bet. Use the reset button to rest your bet.
-- Save yourself the Maths. The total of your hand is displayed on the screen alongside how much money you made  and the dealer's hand at the end of each round .
-- The game is replayable. It'll keep track of how much money you have and will let you know whenever you run out.
-- Sound effect samplers are played when the player clicks on the chips to bet, the cards are being delt, and when you win.
-- The red and blue decorative stacks of chips are dynamic and shrink/grow depending on how much money you have in the bank.
+- **Click on the chips** to place your bet. Use the reset button to rest your bet.
+- **Save yourself the Maths**. The total of your hand is displayed on the screen alongside how much money you made  and the dealer's hand at the end of each round .
+- The game is **replayable**. It'll keep track of how much money you have and will let you know whenever you run out.
+- **Sound effect** samplers are played when the player clicks on the chips to bet, the cards are being delt, and when you win.
+- The red and blue decorative stacks of chips are **dynamic** and shrink/grow depending on how much money you have in the bank.
 No stack under 100, one stack between $100 and $250, two stacks between $250 and $500 and three stacks over $500.
-- The game is played with 3x decks of 52 cards.
+- The game is played with **3x decks** of 52 cards.
 - At the end of each round, the cards that have been played are stacked together and added to the end of the triple deck.
-The decks ARE NOT shuffled (only shuffles once when the page loads).
+The decks **ARE NOT shuffled** (only shuffles once when the page loads).
 
 ## sources:
 CSS playing cards library: (https://repl.it/@jim_clark/Use-CSS-Card-Library#index.html)  
