@@ -64,7 +64,6 @@ dealButton.addEventListener("click", () => {
   deal();
 });
 
-
 hitButton.addEventListener("click", () => {
   cardDown.play();
   deal();
