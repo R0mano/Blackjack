@@ -19,7 +19,7 @@ Beating the dealer pays 2 for 1. BlackJack (two cards: one Ace, one of a value o
 ## Features:
 - **Click on the chips** to place your bet. Use the reset button to rest your bet.
 - **Save yourself the Maths**. The total of your hand is displayed on the screen alongside how much money you made  and the dealer's hand at the end of each round .
-- The game is **replayable**. It'll keep track of how much money you have and will let you know whenever you run out.
+- The game is **replayable**. It'll keep track of how much money you have in the bank and will let you know whenever you run out.
 - **Sound effect** samplers are played when the player clicks on the chips to bet, the cards are being delt, and when you win.
 - The red and blue decorative stacks of chips are **dynamic** and shrink/grow depending on how much money you have in the bank.
 No stack under 100, one stack between $100 and $250, two stacks between $250 and $500 and three stacks over $500.
