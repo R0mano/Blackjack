@@ -9,7 +9,7 @@ Beating the dealer pays 2 for 1. BlackJack (two cards: one Ace, one of a value o
 
 
 ## This version includes most features of the BlackJack:
-- place your bet.
+- Place your bet.
 - Hit (ask for an other card)
 - Stand (end your turn)
 - Double (double the bet but can only get served one card)
