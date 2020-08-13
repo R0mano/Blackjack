@@ -7,7 +7,7 @@ body {
   height: 100vh;
   max-width: 100%;
   margin: 0;
-  font-family: 'Abril Fatface', Helvetica;
+  font-family: "Abril Fatface", Helvetica;
   background-image: url("https://cdn.hipwallpaper.com/i/46/65/hEiUkp.jpg");
   background-size: cover;
   color: white;
@@ -26,19 +26,10 @@ main {
   position: relative;
 }
 
-/* @-moz-document url-prefix() {
-  main {
-    width: 98vw;
-    height: 98vh;
-  }
-} */
-
 p {
   font-size: 3rem;
   color: gold;
-  text-shadow:
-      -1px -1px 0 #000,
-      1px -1px 0 #000
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000;
 }
 
 .deck {
@@ -61,7 +52,7 @@ p {
 }
 
 #dealer-hand {
-    margin-left: 10vh;
+  margin-left: 10vh;
 }
 
 .betting-container {
@@ -69,129 +60,132 @@ p {
   display: grid;
 }
 
-.bet-info{
-    text-align: center;
-    margin-left: 10vw;
+.bet-info {
+  text-align: center;
+  margin-left: 10vw;
 }
 
-[id="5"], [id="10"], [id="50"], [id="100"] {
-    position: relative;
-    display: block;
-    margin: 30px auto;
-    width: 100px;
-    height: 100px;
-    border: 13px dashed white;
-    border-radius: 50%;
-    line-height: 100px;
-    text-align: center;
-    font-family: Helvetica;
-    color: white;
-  }
-  [id="5"]:before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: -14px;
-    border-radius: 50%;
-    background: rgb(149, 149, 149);
-    content: "$5";
-  }
-  [id="5"]:after {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 9px;
-    border: 3px dashed white;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4);
-    content: "";
-  }
-  [id="10"]:before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: -14px;
-    border-radius: 50%;
-    background: rgb(130, 23, 25);
-    content: "$10";
-  }
-  [id="10"]:after {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 9px;
-    border: 3px dashed white;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4);
-    content: "";
-  }
-  [id="50"]:before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: -14px;
-    border-radius: 50%;
-    background: rgb(32, 32, 32);
-    content: "$50";
-  }
-  [id="50"]:after {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 9px;
-    border: 3px dashed white;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4);
-    content: "";
-  }
-  [id="100"]:before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: -14px;
-    border-radius: 50%;
-    background: rgb(0, 51, 150);
-    content: "$100";
-  }
-  [id="100"]:after {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 9px;
-    border: 3px dashed white;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4);
-    content: "";
-  }
+[id="5"],
+[id="10"],
+[id="50"],
+[id="100"] {
+  position: relative;
+  display: block;
+  margin: 30px auto;
+  width: 100px;
+  height: 100px;
+  border: 13px dashed white;
+  border-radius: 50%;
+  line-height: 100px;
+  text-align: center;
+  font-family: Helvetica;
+  color: white;
+}
+[id="5"]:before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: -14px;
+  border-radius: 50%;
+  background: rgb(149, 149, 149);
+  content: "$5";
+}
+[id="5"]:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 9px;
+  border: 3px dashed white;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  content: "";
+}
+[id="10"]:before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: -14px;
+  border-radius: 50%;
+  background: rgb(130, 23, 25);
+  content: "$10";
+}
+[id="10"]:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 9px;
+  border: 3px dashed white;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  content: "";
+}
+[id="50"]:before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: -14px;
+  border-radius: 50%;
+  background: rgb(32, 32, 32);
+  content: "$50";
+}
+[id="50"]:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 9px;
+  border: 3px dashed white;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  content: "";
+}
+[id="100"]:before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: -14px;
+  border-radius: 50%;
+  background: rgb(0, 51, 150);
+  content: "$100";
+}
+[id="100"]:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 9px;
+  border: 3px dashed white;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  content: "";
+}
 
 .chips {
-    display: flex;
-    flex-direction: row;
-    align-self: end;
+  display: flex;
+  flex-direction: row;
+  align-self: end;
 }
 
 .player-cards {
@@ -206,7 +200,7 @@ p {
 }
 
 #player-hand {
-    margin-left: 10vh;
+  margin-left: 10vh;
 }
 
 .play-button-container {
@@ -226,11 +220,14 @@ p {
   align-self: flex-end;
 }
 
-#reset, #stay {
+#reset,
+#stay {
   background-color: rgb(202, 68, 74);
 }
 
-#deal, #hit, #replay {
+#deal,
+#hit,
+#replay {
   background-color: rgb(83, 164, 81);
 }
 
@@ -243,59 +240,43 @@ p {
 }
 
 .chip-stack {
-    align-self: center;
-    position: absolute;
-    left: 20px;
+  align-self: center;
+  position: absolute;
+  left: 20px;
 }
 
 .chip-stack-info {
-    margin: 0;
-}
-
-.betting-button-group {
-  grid-area: play;
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-}
-
-.chip-img {
-    max-width: 18vw;
-    position: absolute;
-    left: 8vw;
-    top: 17vh;
-    z-index: -11;
-    transform: rotateY(40deg);
+  margin: 0;
 }
 
 .first {
-    visibility: hidden;
-    max-width: 15vw;
-    position: absolute;
-    left: 8vw;
-    top: 40vh;
-    z-index: -11;
-    transform: rotateY(40deg);
+  visibility: hidden;
+  position: absolute;
+  max-width: 15vw;
+  left: 8vw;
+  top: 40vh;
+  z-index: -11;
+  transform: rotateY(40deg);
 }
 
-.second{
-    visibility: hidden;
-    max-width: 15vw;
-    position: absolute;
-    left: 2vw;
-    top: 40vh;
-    z-index: -11;
-    transform: rotateY(40deg);
+.second {
+  visibility: hidden;
+  position: absolute;
+  max-width: 15vw;
+  left: 2vw;
+  top: 40vh;
+  z-index: -11;
+  transform: rotateY(40deg);
 }
 
 .third {
-    visibility: hidden;
-    max-width: 15vw;
-    position: absolute;
-    left: 5vw;
-    top: 47vh;
-    z-index: -11;
-    transform: rotateY(40deg);
+  visibility: hidden;
+  position: absolute;
+  max-width: 15vw;
+  left: 5vw;
+  top: 47vh;
+  z-index: -11;
+  transform: rotateY(40deg);
 }
 
 @media only screen and (max-width: 1024px) {
@@ -303,16 +284,18 @@ p {
     font-size: 1.5rem;
   }
 
-  #player-cards, #dealer-cards {
-      text-align: start;
-      margin-left: -10vw;
+  #player-cards,
+  #dealer-cards {
+    text-align: start;
+    margin-left: -10vw;
   }
 
-  .bet-info{
+  .bet-info {
     align-self: flex-end;
   }
 
-  #player-hand, #dealer-hand {
+  #player-hand,
+  #dealer-hand {
     margin-left: 0;
   }
 }
