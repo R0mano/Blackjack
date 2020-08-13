@@ -1,10 +1,15 @@
 /*----- constants -----*/
 
-const chipsSound = new Audio('audio/Poker chips hit settle felt table_BLASTWAVEFX_16064.wav');
-const cardDown = new Audio('audio/MB_Card_Down_06.wav');
-const coinsSound = new Audio('audio/Coins drop multiple wood surface large pile_BLASTWAVEFX_23512.wav');
-const cashRegisterSound = new Audio('audio/Springy antique cash register lever and bell quickly.wav');
-
+const chipsSound = new Audio(
+  "audio/Poker chips hit settle felt table_BLASTWAVEFX_16064.wav"
+);
+const cardDown = new Audio("audio/MB_Card_Down_06.wav");
+const coinsSound = new Audio(
+  "audio/Coins drop multiple wood surface large pile_BLASTWAVEFX_23512.wav"
+);
+const cashRegisterSound = new Audio(
+  "audio/Springy antique cash register lever and bell quickly.wav"
+);
 
 const suits = ["s", "c", "d", "h"];
 const ranks = [
@@ -49,15 +54,14 @@ const stayButton = document.querySelector("#stay");
 const chipStack = document.querySelector("#stack");
 const currentBet = document.querySelector("#bet");
 const replayButton = document.querySelector("#replay");
-const playerHandCount = document.querySelector('#player-hand');
-const dealerHandCount = document.querySelector('#dealer-hand');
-const winningMessage = document.querySelector('#winning-message');
-
+const playerHandCount = document.querySelector("#player-hand");
+const dealerHandCount = document.querySelector("#dealer-hand");
+const winningMessage = document.querySelector("#winning-message");
 
 /*----- event listeners -----*/
-chips.addEventListener('click', addBet);
+chips.addEventListener("click", addBet);
 
-resetButton.addEventListener('click', addBet);
+resetButton.addEventListener("click", addBet);
 
 dealButton.addEventListener("click", () => {
   cardDown.play();
@@ -97,9 +101,9 @@ function replay() {
   winner = null;
   stay = false;
   dealt = false;
-  winningMessage.textContent = '';
-  playerHandCount.textContent = '';
-  dealerHandCount.textContent = '';
+  winningMessage.textContent = "";
+  playerHandCount.textContent = "";
+  dealerHandCount.textContent = "";
   let usedCards = playerHand.concat(dealerHand);
   usedCards.forEach((card) => {
     shuffledDeck.push(card);
@@ -107,7 +111,7 @@ function replay() {
   usedCards = [];
   playerHand = [];
   dealerHand = [];
-  chips.addEventListener('click', addBet);
+  chips.addEventListener("click", addBet);
   render();
 }
 
@@ -115,27 +119,25 @@ function render() {
   currentBet.textContent = bet;
   chipStack.textContent = stack;
 
-
-  if (stack >=100) {
-    document.querySelector('.second').style.visibility = "visible";
+  if (stack >= 100) {
+    document.querySelector(".second").style.visibility = "visible";
   } else {
-    document.querySelector('.second').style.visibility = "hidden";
+    document.querySelector(".second").style.visibility = "hidden";
   }
   if (stack >= 250) {
-    document.querySelector('.third').style.visibility = "visible";
+    document.querySelector(".third").style.visibility = "visible";
   } else {
-    document.querySelector('.third').style.visibility = "hidden";
+    document.querySelector(".third").style.visibility = "hidden";
   }
   if (stack > 500) {
-    document.querySelector('.first').style.visibility = "visible";
+    document.querySelector(".first").style.visibility = "visible";
   } else {
-    document.querySelector('.first').style.visibility = "hidden";
+    document.querySelector(".first").style.visibility = "hidden";
   }
 
   playerCardContainer.innerHTML = "";
   dealerCardsContainer.innerHTML = "";
   winningMessage.textContent = "";
-
 
   dealButton.style.visibility = "hidden";
   doubleButton.style.visibility = "hidden";
@@ -145,7 +147,7 @@ function render() {
   resetButton.style.visibility = "hidden";
 
   if (bet === 0 && playerHand.length === 0 && dealerHand.length === 0) {
-    winningMessage.textContent = "Click on the chips to place your bet"
+    winningMessage.textContent = "Click on the chips to place your bet";
   }
 
   if (playerHand.length > 0) {
@@ -184,7 +186,7 @@ function render() {
   }
 
   if (dealt) {
-    chips.removeEventListener('click', addBet);
+    chips.removeEventListener("click", addBet);
   }
 
   if (stay) {
@@ -204,13 +206,17 @@ function render() {
     doubleButton.style.visibility = "hidden";
     hitButton.style.visibility = "hidden";
     stayButton.style.visibility = "hidden";
-    dealerHandCount.textContent = checkTotal(dealerHand);
+    if (winner !== `Bust! You lose`) {
+      dealerHandCount.textContent = checkTotal(dealerHand);
+    }
+    
     renderHandInContainer(dealerHand, dealerCardsContainer);
     renderHandInContainer(playerHand, playerCardContainer);
   }
 
   if (stack === 0 && bet === 0) {
-    winningMessage.textContent = "You're broke. Go to the ATM or refresh the page to continue.";
+    winningMessage.textContent =
+      "You're broke. Go to the ATM or refresh the page to continue.";
     replayButton.style.visibility = "hidden";
   }
 }
@@ -269,7 +275,7 @@ function dealerPlay() {
   stay = true;
   while (checkTotal(dealerHand) < 17) {
     dealerHand.push(shuffledDeck.splice(0, 1)[0]);
-  };
+  }
   setTimeout(() => {
     render();
     gameOver();
@@ -277,34 +283,37 @@ function dealerPlay() {
 }
 
 function gameOver() {
-  if (checkTotal(playerHand) === limit && playerHand.length === 2 ) {
+  if (checkTotal(playerHand) === limit && playerHand.length === 2) {
     cashRegisterSound.play();
     coinsSound.play();
-    winner = `Blackjack! You win: $ ${bet * 3/2}`;
-    stack += bet * 3/2;
-    
+    winner = `Blackjack! You win: $ ${(bet * 3) / 2}`;
+    stack += (bet * 3) / 2;
+  } else if (checkTotal(playerHand) > limit) {
+    winner = `Bust! You lose`;
   } else if (
-    checkTotal(playerHand) > limit ||
-    (checkTotal(playerHand) <= limit &&
-      checkTotal(dealerHand) <= limit &&
-      checkTotal(playerHand) < checkTotal(dealerHand)) && stay||
-    (dealerHand.length === 2 &&
-      checkTotal(dealerHand) === limit &&
-      checkTotal(playerHand) !== limit) && stay
+    dealerHand.length === 2 &&
+    checkTotal(dealerHand) === limit &&
+    stay
   ) {
-    winner = `You lose!`;
-    
+    winner = `You lose! Dealer has BlackJack`;
+  } else if (
+    checkTotal(playerHand) <= limit &&
+    checkTotal(dealerHand) <= limit &&
+    checkTotal(playerHand) < checkTotal(dealerHand) &&
+    stay
+  ) {
+    winner = `You lose! Dealer has a better hand`;
   } else if (
     (checkTotal(playerHand) <= limit && checkTotal(dealerHand) > limit) ||
     (checkTotal(playerHand) <= limit &&
       checkTotal(dealerHand) <= limit &&
-      checkTotal(playerHand) > checkTotal(dealerHand)) && stay
+      checkTotal(playerHand) > checkTotal(dealerHand) &&
+      stay)
   ) {
     cashRegisterSound.play();
     coinsSound.play();
     winner = `You win: $ ${bet * 2}`;
     stack += bet * 2;
-
   } else if (checkTotal(playerHand) === checkTotal(dealerHand) && stay) {
     winner = `Stand Off!`;
     stack += bet;
@@ -318,7 +327,7 @@ function renderHandInContainer(hand, container) {
   }, "");
   container.innerHTML = cardsHtml;
 
-  if (hand === dealerHand && dealerHand.length <= 2 && stay === false) {  
+  if (hand === dealerHand && dealerHand.length <= 2 && stay === false) {
     container.firstChild.classList.add("back-red");
   }
   if (stay) {
