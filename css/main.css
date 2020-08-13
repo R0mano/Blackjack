@@ -26,12 +26,12 @@ main {
   position: relative;
 }
 
-@-moz-document url-prefix() {
+/* @-moz-document url-prefix() {
   main {
     width: 98vw;
     height: 98vh;
   }
-}
+} */
 
 p {
   font-size: 3rem;
