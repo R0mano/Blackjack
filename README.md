@@ -4,9 +4,8 @@
 BlackJack is a popular casino card game. The player tries to beat the dealer by having a better hand than him without going over 21.
 Each card is worth her face value, Jacks, Queens and Kings are also worth 10 and Aces are worth 11 or 1 depending whichever makes a better hand.
 Beating the dealer pays 2 for 1. BlackJack (two cards: one Ace, one of a value of 10) pays 3 for 2.
-
-https://i.imgur.com/EW8t9Qw.jpg
-https://i.imgur.com/QegZXls.jpg
+![Game screenshot](https://i.imgur.com/EW8t9Qw.jpg)
+![Game screenshot](https://i.imgur.com/QegZXls.jpg)
 
 ##This version includes most features of the BlackJack:
 - place your bet.
@@ -37,5 +36,5 @@ Chip Stack image: https://www.netclipart.com/isee/TToTTh_poker-chips-clipart-red
 ##technologies used:
 Plain HTML, CSS, JavScript
 
-##Play it: https://r0mano.github.io/Blackjack/
+##[Play BlackJack] (https://r0mano.github.io/Blackjack/)
 
