@@ -27,14 +27,14 @@ No stack under 100, one stack between $100 and $250, two stacks between $250 and
 - At the end of each round, the cards that have been played are stacked together and added to the end of the triple deck.
 The decks **ARE NOT shuffled** (only shuffles once when the page loads).
 
-## sources:
+## Sources:
 - CSS playing cards library: (https://repl.it/@jim_clark/Use-CSS-Card-Library#index.html)  
 - Casino chip CSS: (https://codepen.io/Zodiase/pen/adjeVW)  
 - Sound Effect: (https://www.soundsnap.com/)  
 - Chip Stack image: (https://www.netclipart.com/isee/TToTTh_poker-chips-clipart-red-and-blue-poker-chips/)  
 
 
-## technologies used:
+## Technologies used:
 Plain HTML, CSS, JavScript  
 
 ## [=>Play BlackJack](https://r0mano.github.io/Blackjack/)
