@@ -82,7 +82,7 @@ replayButton.addEventListener("click", replay);
 /*----- functions -----*/
 
 function init() {
-  stack = 2685;
+  stack = 500;
   bet = 0;
   playerHand = [];
   dealerHand = [];
