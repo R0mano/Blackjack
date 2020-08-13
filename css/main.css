@@ -5,6 +5,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  max-width: 100%;
   margin: 0;
   font-family: 'Abril Fatface', Helvetica;
   background-image: url("https://cdn.hipwallpaper.com/i/46/65/hEiUkp.jpg");
