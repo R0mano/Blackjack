@@ -7,7 +7,7 @@ Beating the dealer pays 2 for 1. BlackJack (two cards: one Ace, one of a value o
 ![Game screenshot](https://i.imgur.com/EW8t9Qw.jpg)
 ![Game screenshot](https://i.imgur.com/QegZXls.jpg)
 
-##This version includes most features of the BlackJack:
+## This version includes most features of the BlackJack:
 - place your bet.
 - Hit (ask for an other card)
 - Stand (end your turn)
@@ -15,7 +15,7 @@ Beating the dealer pays 2 for 1. BlackJack (two cards: one Ace, one of a value o
 
 "Split" and "Insurance" are unavailable in this version.
 
-##Features:
+## Features:
 - Click on the chips to place your bet. Use the reset button to rest your bet.
 - Save yourself the Maths. The total of your hand is displayed on the screen alongside how much money you made  and the dealer's hand at the end of each round .
 - The game is replayable. It'll keep track of how much money you have and will let you know whenever you run out.
@@ -26,14 +26,14 @@ No stack under 100, one stack between $100 and $250, two stacks between $250 and
 - At the end of each round, the cards that have been played are stacked together and added to the end of the triple deck.
 The decks ARE NOT shuffled (only shuffles once when the page loads).
 
-##sources:
-CSS playing cards library: https://repl.it/@jim_clark/Use-CSS-Card-Library#index.html
-Casino chip CSS: https://codepen.io/Zodiase/pen/adjeVW
-Sound Effect: https://www.soundsnap.com/
-Chip Stack image: https://www.netclipart.com/isee/TToTTh_poker-chips-clipart-red-and-blue-poker-chips/
+## sources:
+CSS playing cards library: (https://repl.it/@jim_clark/Use-CSS-Card-Library#index.html)
+Casino chip CSS: (https://codepen.io/Zodiase/pen/adjeVW)
+Sound Effect: (https://www.soundsnap.com/)
+Chip Stack image: (https://www.netclipart.com/isee/TToTTh_poker-chips-clipart-red-and-blue-poker-chips/)
 
 
-##technologies used:
+## technologies used:
 Plain HTML, CSS, JavScript
 
 ##[Play BlackJack] (https://r0mano.github.io/Blackjack/)
