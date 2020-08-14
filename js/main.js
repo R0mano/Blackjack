@@ -239,7 +239,7 @@ function deal() {
   dealt = true;
   if (playerHand.length === 0 && dealerHand.length === 0) {
     playerHand = shuffledDeck.splice(0, 2);
-    dealerHand = shuffledDeck.splice(2, 2);
+    dealerHand = shuffledDeck.splice(0, 2);
   } else {
     playerHand.push(shuffledDeck.splice(0, 1)[0]);
   }
