@@ -5,7 +5,9 @@ BlackJack is a popular casino card game. The player tries to beat the dealer by 
 Each card is worth her face value, Jacks, Queens and Kings are also worth 10 and Aces are worth 11 or 1 depending whichever makes a better hand.
 Beating the dealer pays 2 for 1. BlackJack (two cards: one Ace, one of a value of 10) pays 3 for 2. More info about [BlackJack rules and strategy](http://www.hitorstand.net/strategy.php).
 <br/><br/>
-![Game screenshot](https://i.imgur.com/EW8t9Qw.jpg)  
+![Wireframe](https://i.imgur.com/W1gSnGf.jpg)
+<br/><br/>
+![Game screenshot](https://i.imgur.com/9zb79Mp.jpg)  
 
 
 ## This version includes most features of the BlackJack:
